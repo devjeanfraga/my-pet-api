@@ -8,7 +8,9 @@ const multer = require('multer')
     },
   
     filename: function (req, file , cb) {
-      const fileName = `${file.fieldname}-${Date.now()}-${path.extname(file.originalname)}`
+      const fileName = `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
+      //const fileName = `${file.fieldname}-${Date.now()}-${path.extname(file.originalname)}`
+
       cb(null,fileName )
     }
   })

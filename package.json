@@ -1,0 +1,25 @@
+{
+  "name": "my_pet",
+  "version": "1.0.0",
+  "description": "Api que efetua CRUD para uma Clínica Veterinária/ Api that performs CRUD for a veterinary clinic",
+  "main": "index.js",
+  "repository": "https://github.com/Azkabann/My-Pet",
+  "author": "Jean Fraga <jeanfragoli395@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
+    "yup": "^0.32.11"
+  }
+}

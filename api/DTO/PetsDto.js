@@ -10,7 +10,7 @@ const dbImages = new ImagesServices('Images')
 let url; 
 
 process.env.NODE_ENV === "production" 
-  ? url = 'https://git.heroku.com/api-my-pet.git' 
+  ? url = 'https://git.heroku.com/api-my-pet' 
   : url = 'http://localhost:3838/uploads'
 
 class PetsDto {

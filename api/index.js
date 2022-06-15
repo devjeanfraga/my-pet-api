@@ -1,8 +1,6 @@
 require('dotenv').config()
 const express =  require('express')
 const routes = require('./routes')
-const multer = require('multer')
-const storage = require('./config/uploads')
 const path = require('path')
 const cors = require('cors')
 const {NotFound, InvalidFields, DataNotProvided} =require('./errors')
@@ -12,7 +10,7 @@ const app = express()
 
 app.use(cors())
 routes(app)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //app.get('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //const uploads = multer({storage})

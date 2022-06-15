@@ -1,17 +1,16 @@
 const db = require('../models')
-const Sequelize = require('sequelize')
 const PetsServices = require('../services/Services')
 const SexesServices = require('../services/SexesServices')
 const ImagesServices = require('../services/ImagesServices')
 const dbPet = new PetsServices('Pets')
-const  dbSex = new SexesServices('Sexes')
+const dbSex = new SexesServices('Sexes')
 const dbImages = new ImagesServices('Images')
+const { cloudnary } =require('../config/uploads')
 
-let url; 
-
-process.env.NODE_ENV === "production" 
-  ? url = 'https://api-my-pet.herokuapp.com' 
-  : url = 'http://localhost:3838/uploads'
+// let url; 
+// process.env.NODE_ENV === "production" 
+//   ? url = 'https://api-my-pet.herokuapp.com' 
+//   : url = 'http://localhost:3838/uploads'
 
 class PetsDto {
   constructor ({id , name , age , breed , weight , client_id , gender ,  images=[]  } ) {
@@ -48,7 +47,7 @@ class PetsDto {
     this.images = pictures.map(image => { return { 
       idFile: image.id,
       idPet: image.pet_id,
-      NameFile: `${url}/${image.path}`,
+      NameFile: `${cloudnary.url(image.path, { version:  Date.now() })}`,
       createdAtFile:  image.createdAt,
       updatedAtFile:  image.updatedAt    
     }})
@@ -65,7 +64,10 @@ class PetsDto {
       breed: this.breed = pet.breed,
       weight: this.weight = pet.weight,
       gender: this.gender = pet.gender.map( i => {return {sex: this.gender = i.gender}}),
-      images: this.images = pet.pictures.map(image => {return  {id: image.id, path: `${url}/${image.path}` }})
+      images: this.images = pet.pictures.map(image => {return  {
+        id: image.id, 
+        path: `${ cloudnary.url(image.path, { version: Date.now() } )}`
+      }})
     }
   }
 

@@ -1,13 +1,14 @@
 const {Router} = require('express')
 const PetsController = require('../controllers/PetsController')
-const storage = require('../config/uploads')
+const{ multerStorage, cloudinaryStorage} = require('../config/uploads')
 const multer = require('multer')
 
-
+let storage = cloudinaryStorage;
 
 
 const  router = Router()
 const uploads = multer({storage: storage,}).fields([{name: 'images', maxCount: 6}])
+
 
 router.post('/clients/:clientId/pets', uploads, PetsController.create)
 

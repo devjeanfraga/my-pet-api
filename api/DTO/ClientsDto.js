@@ -64,6 +64,8 @@ class ClientDto {
   })
   }
 
+
+
   async recycleClient () {
      return db.sequelize.transaction(async transacao => {
       await dbClients.restaurarResgistro( {id:this.id}, {transaction: transacao})

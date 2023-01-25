@@ -2,6 +2,7 @@ const database = require('../models')
 const ClientDto = require('../DTO/ClientsDto')
 const{ SerialClient} = require('../serial/Serializer')
 const {ClientsServices} = require('../services')
+const db = require('./../models')
 const serializer = new SerialClient()
 
 
@@ -87,6 +88,17 @@ class ClientsController {
       await client.recycleClient()
 
       return res.status(200).json(client)
+    } catch (err) {console.log(err)}
+  }
+
+  static async bulkRemoveData (req, res) {
+    try {
+      // const client = new ClientDto()
+      // await client.bulkRemove();
+        db.sequelize.transaction(async transacao => {
+        await db.Clients.destroy({where: {name: "Teste"}})
+      })    
+      return res.status(200).json({mesage: `clientes removidos com sucesso`})
     } catch (err) {console.log(err)}
   }
 

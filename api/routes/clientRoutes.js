@@ -10,6 +10,7 @@ router.get('/clients', ClientsController.show)
 router.get('/clients/:clientId', ClientsController.index)
 router.put('/clients/:clientId', ClientsController.update)
 router.delete('/clients/:clientId', ClientsController.remove)
+router.delete('/bulk-remove', ClientsController.bulkRemoveData)
 router.post('/clients/:clientId/restore', ClientsController.restore)
 
 

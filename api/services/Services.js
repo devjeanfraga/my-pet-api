@@ -27,11 +27,18 @@ class Services {
 
   async apagarRegistro ( where = {}, options = {}, transacao = {}, ) {
     return db[this.model].destroy( where, options, transacao)
+  
+  }
+
+  async apagarRegistros ( tableName, where = {}) {
+    return db[this.model].bulkDelete( tableName, where )
+  
   }
 
   async restaurarResgistro(where = {}, transacao = {}) {
       return db[this.model].restore({where: where}, transacao)
   }
+
 }
 
 
